@@ -230,9 +230,57 @@ class _HomeScreenState extends State<HomeScreen> {
               "Today Task",
               style: TextStyle(fontSize: 18),
             ),
+          ),
+          Container(
+            margin: const EdgeInsets.symmetric(horizontal: 10),
+            child: Column(
+              children: [
+                TaskItem(context)
+              ],
+            ),
           )
         ],
       ),
     );
   }
+}
+
+Widget TaskItem(context){
+  return Card(
+    child: SizedBox(
+      height: 100,
+      width: MediaQuery.of(context).size.width - 28,
+      child: Container(
+        padding: const EdgeInsets.all(10),
+        child: Row(
+          children: [
+            const Card(
+              color: Colors.amber,
+              child: SizedBox(
+                height: 80,
+                width: 80,
+              ),
+            ),
+            Container(
+              padding: const EdgeInsets.symmetric(horizontal: 10),
+              child: const Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text("Add to market",style: TextStyle(
+                      fontSize: 18
+                  ),),
+                  Text("10h - 11h")
+                ],
+              ),
+            ),
+            const Spacer(),
+            Checkbox(value: false, onChanged: (value) {
+              print("d");
+            }),
+          ],
+        ),
+      ),
+    ),
+  );
 }
