@@ -55,197 +55,114 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
         ],
       ),
-      body: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Container(
-            margin: const EdgeInsets.symmetric(vertical: 20, horizontal: 10),
-            width: MediaQuery.of(context).size.width,
-            height: 180,
-            child: const Card(
-              color: Colors.deepPurpleAccent,
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Padding(
-                      padding:
-                          EdgeInsets.symmetric(vertical: 40, horizontal: 20),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            "Today progress summery",
-                            style: TextStyle(color: Colors.white, fontSize: 22),
-                          ),
-                          Text(
-                            "15 Tasks",
-                            style: TextStyle(color: Colors.white, fontSize: 18),
-                          ),
-                        ],
-                      ))
-                ],
+
+      body: SingleChildScrollView(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            // banner
+            Container(
+              margin: const EdgeInsets.only(top: 20,left: 10,right: 10,bottom: 10),
+              width: MediaQuery.of(context).size.width,
+              height: 180,
+              child: Card(
+                color: Colors.deepPurpleAccent,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Container(
+                        padding:
+                            const EdgeInsets.symmetric(vertical: 40, horizontal: 20),
+                        child: const Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              "Today progress summery",
+                              style: TextStyle(color: Colors.white, fontSize: 22),
+                            ),
+                            Text(
+                              "15 Tasks",
+                              style: TextStyle(color: Colors.white, fontSize: 18),
+                            ),
+                          ],
+                        ))
+                  ],
+                ),
               ),
             ),
-          ),
-          const Padding(
-            padding: EdgeInsets.symmetric(vertical: 10, horizontal: 10),
-            child: Text(
-              "Workspace",
-              style: TextStyle(fontSize: 18),
-            ),
-          ),
-          Container(
-            margin: const EdgeInsets.symmetric(horizontal: 10),
-            child: const SingleChildScrollView(
-              scrollDirection: Axis.horizontal,
+            // workspace section
+            Container(
+              padding: const EdgeInsets.all(10),
               child: Row(
                 children: [
-                  SizedBox(
-                    width: 80,
-                    height: 80,
-                    child: Card(
-                      child: Center(
-                        child: Text(
-                          "ss",
-                          style: TextStyle(fontSize: 26),
-                        ),
-                      ),
-                    ),
+                  const Text(
+                    "Workspace",
+                    style: TextStyle(fontSize: 18),
                   ),
-                  SizedBox(
-                    width: 80,
-                    height: 80,
-                    child: Card(
-                      child: Center(
-                        child: Text(
-                          "ss",
-                          style: TextStyle(fontSize: 26),
-                        ),
-                      ),
-                    ),
+                  const Spacer(),
+                  GestureDetector(
+                    child: const Text("view all",),
+                    onTap: () => {
+                      print("tap")
+                    },
                   ),
-                  SizedBox(
-                    width: 80,
-                    height: 80,
-                    child: Card(
-                      child: Center(
-                        child: Text(
-                          "ss",
-                          style: TextStyle(fontSize: 26),
-                        ),
-                      ),
-                    ),
-                  ),
-                  SizedBox(
-                    width: 80,
-                    height: 80,
-                    child: Card(
-                      child: Center(
-                        child: Text(
-                          "ss",
-                          style: TextStyle(fontSize: 26),
-                        ),
-                      ),
-                    ),
-                  ),
-                  SizedBox(
-                    width: 80,
-                    height: 80,
-                    child: Card(
-                      child: Center(
-                        child: Text(
-                          "ss",
-                          style: TextStyle(fontSize: 26),
-                        ),
-                      ),
-                    ),
-                  ),
-                  SizedBox(
-                    width: 80,
-                    height: 80,
-                    child: Card(
-                      child: Center(
-                        child: Text(
-                          "ss",
-                          style: TextStyle(fontSize: 26),
-                        ),
-                      ),
-                    ),
-                  ),
-                  SizedBox(
-                    width: 80,
-                    height: 80,
-                    child: Card(
-                      child: Center(
-                        child: Text(
-                          "ss",
-                          style: TextStyle(fontSize: 26),
-                        ),
-                      ),
-                    ),
-                  ),
-                  SizedBox(
-                    width: 80,
-                    height: 80,
-                    child: Card(
-                      child: Center(
-                        child: Text(
-                          "ss",
-                          style: TextStyle(fontSize: 26),
-                        ),
-                      ),
-                    ),
-                  ),
-                  SizedBox(
-                    width: 80,
-                    height: 80,
-                    child: Card(
-                      child: Center(
-                        child: Text(
-                          "ss",
-                          style: TextStyle(fontSize: 26),
-                        ),
-                      ),
-                    ),
-                  ),
-                  SizedBox(
-                    width: 80,
-                    height: 80,
-                    child: Card(
-                      child: Center(
-                        child: Text(
-                          "ss",
-                          style: TextStyle(fontSize: 26),
-                        ),
-                      ),
-                    ),
-                  )
                 ],
+              )
+            ),
+            Container(
+              margin: const EdgeInsets.symmetric(horizontal: 10),
+              child: SingleChildScrollView(
+                scrollDirection: Axis.horizontal,
+                child: Row(
+                  children: [
+                    WorkspaceItem(context),
+                    WorkspaceItem(context),
+                    WorkspaceItem(context),
+                    WorkspaceItem(context),
+                    WorkspaceItem(context),
+                  ],
+                ),
               ),
             ),
-          ),
-          Container(
-            margin: const EdgeInsets.all(10),
-            child: const Text(
-              "Today Task",
-              style: TextStyle(fontSize: 18),
-            ),
-          ),
-          Container(
-            margin: const EdgeInsets.symmetric(horizontal: 10),
-            child: Column(
-              children: [
-                TaskItem(context)
-              ],
-            ),
-          )
-        ],
+            // task section
+            Container(
+                margin: const EdgeInsets.all(10),
+                child: Row(
+                  children: [
+                    const Text(
+                      "Today Task",
+                      style: TextStyle(fontSize: 18),
+                    ),
+                    const Spacer(),
+                    GestureDetector(
+                      child: const Text("view all",),
+                      onTap: () => {
+                        print("tap")
+                      },
+                    ),
+                  ],
+                )),
+            Container(
+              margin: const EdgeInsets.symmetric(horizontal: 10),
+              child: Column(
+                children: [
+                  TaskItem(context),
+                  TaskItem(context),
+                  TaskItem(context),
+                  TaskItem(context),
+                  TaskItem(context),
+                  TaskItem(context),
+                ],
+              ),
+            )
+          ],
+        ),
       ),
     );
   }
 }
 
-Widget TaskItem(context){
+Widget TaskItem(context) {
   return Card(
     child: SizedBox(
       height: 100,
@@ -267,18 +184,36 @@ Widget TaskItem(context){
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text("Add to market",style: TextStyle(
-                      fontSize: 18
-                  ),),
+                  Text(
+                    "Add to market",
+                    style: TextStyle(fontSize: 18),
+                  ),
                   Text("10h - 11h")
                 ],
               ),
             ),
             const Spacer(),
-            Checkbox(value: false, onChanged: (value) {
-              print("d");
-            }),
+            Checkbox(
+                value: false,
+                onChanged: (value) {
+                  print("d");
+                }),
           ],
+        ),
+      ),
+    ),
+  );
+}
+
+Widget WorkspaceItem(context) {
+  return const SizedBox(
+    width: 80,
+    height: 80,
+    child: Card(
+      child: Center(
+        child: Text(
+          "ss",
+          style: TextStyle(fontSize: 26),
         ),
       ),
     ),
